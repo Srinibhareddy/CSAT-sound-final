@@ -6,13 +6,13 @@
     <title>Applause Sound</title>
 </head>
 <body>
-    <h1>Click the button to play the sound</h1>
-    <button id="playButton">Play Sound</button>
-    
     <script>
-        document.getElementById("playButton").addEventListener("click", function() {
+        document.addEventListener("DOMContentLoaded", function() {
             let audio = new Audio("https://www.soundjay.com/human/sounds/applause-01.mp3");
-            audio.play().catch(error => console.log("Playback failed:", error));
+            audio.muted = true; // Start muted to trick autoplay policy
+            audio.play().then(() => {
+                audio.muted = false; // Unmute after playback starts
+            }).catch(error => console.log("Autoplay blocked:", error));
         });
     </script>
 </body>
