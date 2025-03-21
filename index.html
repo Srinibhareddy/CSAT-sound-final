@@ -6,16 +6,17 @@
     <title>Applause Sound</title>
 </head>
 <body>
-    <audio id="applause" autoplay muted playsinline>
+    <button id="playButton">Play Sound</button>
+    
+    <audio id="applause">
         <source src="https://www.soundjay.com/human/sounds/applause-01.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("playButton").addEventListener("click", function() {
             let audio = document.getElementById("applause");
-            audio.muted = false; // Unmute after user interaction
-            audio.play().catch(error => console.log("Autoplay prevented, user interaction needed."));
+            audio.play().catch(error => console.log("Playback failed:", error));
         });
     </script>
 </body>
